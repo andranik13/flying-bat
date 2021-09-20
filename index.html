@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The bat is flying</title>
+</head>
+<body>
+  <div id="controls">
+    <button id="up">Up</button>
+    <button id="down">Down</button>
+    <button id="left">Left</button>
+    <button id="right">Right</button>
+  </div>
+  <img alt="image of a bat" id="bat" src="./Halloween_Black_Bat_Clipart.png">
+
+  <style>
+    body {
+      background-color:rgb(32, 31, 31);
+    }
+    img {
+      width: 300px;
+    }
+
+    #bat {
+      position: absolute;
+      top: 400px;
+      left: 780px;
+    }
+
+    #controls {
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+  </style>
+  <script>
+    const bat = document.getElementById('bat');
+    const up = document.getElementById('up');
+    const down = document.getElementById('down');
+    const left = document.getElementById('left');
+    const right = document.getElementById('right');
+
+    let goUp;
+    let goDown;
+    let goLeft;
+    let goRight;
+  
+    up.addEventListener('mousedown', () => {
+      goUp = setInterval(() => {
+        const initialPosition = bat.offsetTop;
+        const finalPosition = initialPosition - 1;
+        bat.style.top = `${finalPosition}px`;
+      }, 10);
+    });
+    up.addEventListener('mouseup', () => clearInterval(goUp));
+
+    down.addEventListener('mousedown', () => {
+        goDown = setInterval(() => {
+          const initialPosition = bat.offsetTop;
+          const finalPosition = initialPosition + 1;
+          bat.style.top = `${finalPosition}px`;
+        }, 10);
+      });
+    down.addEventListener('mouseup', () => clearInterval(goDown));
+
+    left.addEventListener('mousedown', () => {
+      goLeft = setInterval(() => {
+        const initialPosition = bat.offsetLeft;
+        const finalPosition = initialPosition - 1;
+        bat.style.left = `${finalPosition}px`;
+      }, 10);
+    });
+    left.addEventListener('mouseup', () => clearInterval(goLeft));
+
+    right.addEventListener('mousedown', () => {
+      goRight = setInterval(() => {
+        const initialPosition = bat.offsetLeft;
+        const finalPosition = initialPosition + 1;
+        bat.style.left = `${finalPosition}px`;
+      }, 10);
+    });
+    right.addEventListener('mouseup', () => clearInterval(goRight));
+  </script>
+</body>
+</html>
